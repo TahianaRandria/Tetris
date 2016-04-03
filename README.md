@@ -23,4 +23,4 @@ A chaque composant correspond une responsabilité.
 C'est le cas par exemple de la clock. 
 De même on observe cette même responsabilité unique pour le jeu (et d'ailleurs pour les composants de notre projet).
 
-Grâce à ce projet, nous avons pu commencé à appréhender l'importance d'une architecture dans un projet. Nous réalisons à présent combien une architecture est indispensable pour des projets de plus grande envergure.
+Grâce à ce projet, nous avons pu commencer à appréhender l'importance d'une architecture dans un projet. Nous réalisons à présent combien une architecture est indispensable pour des projets de plus grande envergure.
