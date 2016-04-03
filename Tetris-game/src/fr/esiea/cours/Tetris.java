@@ -13,7 +13,7 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
+import fr.esiea.cours.Clock;
 import javax.swing.JFrame;
 
 /**
@@ -344,7 +344,7 @@ public class Tetris extends JFrame {
 		else{
 			BufferedReader br = new BufferedReader(new FileReader(file));
 			String line;
-			List<Integer> scores = new ArrayList<>();
+			List<Integer> scores = new ArrayList<Integer>();
 			while((line=br.readLine())!=null){
 				
 				scores.add(Integer.parseInt(line));
