@@ -81,10 +81,6 @@ public class Tetris extends JFrame {
 	 */
 	private Random random;
 
-	/**
-	 * The clock that handles the update logic.
-	 */
-	private Clock logicTimer;
 
 	/**
 	 * The current type of tile.
@@ -166,7 +162,7 @@ public class Tetris extends JFrame {
 				 */
 				case KeyEvent.VK_S :
 					if(!isPaused && dropCooldown == 0) {
-						logicTimer.setCyclesPerSecond(25.0f);
+						Clock.getInstance().setCyclesPerSecond(25.0f);
 					}
 					break;
 
@@ -226,7 +222,7 @@ public class Tetris extends JFrame {
 				case KeyEvent.VK_P:
 					if(!isGameOver && !isNewGame) {
 						isPaused = !isPaused;
-						logicTimer.setPaused(isPaused);
+						Clock.getInstance().setPaused(isPaused);
 					}
 					break;
 
@@ -254,8 +250,8 @@ public class Tetris extends JFrame {
 				 * any cycles that might still be elapsed.
 				 */
 				case KeyEvent.VK_S:
-					logicTimer.setCyclesPerSecond(gameSpeed);
-					logicTimer.reset();
+					Clock.getInstance().setCyclesPerSecond(gameSpeed);
+					Clock.getInstance().reset();
 					break;
 				}
 
@@ -288,8 +284,7 @@ public class Tetris extends JFrame {
 		 * Setup the timer to keep the game from running before the user presses enter
 		 * to start it.
 		 */
-		this.logicTimer = new Clock(gameSpeed);
-		logicTimer.setPaused(true);
+		Clock.getInstance().setPaused(true);
 
 		while(true) {
 
@@ -298,13 +293,13 @@ public class Tetris extends JFrame {
 			}
 			long start = System.nanoTime();
 
-			logicTimer.update();
+			Clock.getInstance().update();
 
 			/*
 			 * If a cycle has elapsed on the timer, we can update the game and
 			 * move our current piece down.
 			 */
-			if(logicTimer.hasElapsedCycle()) {
+			if(Clock.getInstance().hasElapsedCycle()) {
 				updateGame();
 			}
 
@@ -412,8 +407,8 @@ public class Tetris extends JFrame {
 			 * to reflect the increase.
 			 */
 			gameSpeed += 0.035f;
-			logicTimer.setCyclesPerSecond(gameSpeed);
-			logicTimer.reset();
+			Clock.getInstance().setCyclesPerSecond(gameSpeed);
+			Clock.getInstance().reset();
 
 			/*
 			 * Set the drop cooldown so the next piece doesn't automatically come flying
@@ -456,8 +451,8 @@ public class Tetris extends JFrame {
 		this.isNewGame = false;
 		this.isGameOver = false;		
 		board.clear();
-		logicTimer.reset();
-		logicTimer.setCyclesPerSecond(gameSpeed);
+		Clock.getInstance().reset();
+		Clock.getInstance().setCyclesPerSecond(gameSpeed);
 		spawnPiece();
 	}
 
@@ -482,7 +477,7 @@ public class Tetris extends JFrame {
 		 */
 		if(!board.isValidAndEmpty(currentType, currentCol, currentRow, currentRotation)) {
 			this.isGameOver = true;
-			logicTimer.setPaused(true);
+			Clock.getInstance().setPaused(true);
 		}		
 	}
 

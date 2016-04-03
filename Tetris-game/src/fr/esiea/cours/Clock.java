@@ -7,6 +7,8 @@ package fr.esiea.cours;
  */
 public class Clock {
 	
+	
+	private final static Clock INSTANCE =new Clock( 1.0f);
 	/**
 	 * The number of milliseconds that make up one cycle.
 	 */
@@ -135,6 +137,10 @@ public class Clock {
 	 */
 	private static final long getCurrentTime() {
 		return (System.nanoTime() / 1000000L);
+	}
+
+	public static Clock getInstance() {
+		return INSTANCE;
 	}
 
 }
