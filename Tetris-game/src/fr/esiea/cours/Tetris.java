@@ -328,20 +328,30 @@ public class Tetris extends JFrame {
 	 * saves score if it is better than 5th one 
 	 * @throws IOException
 	 */
-	private void maySaveScore() throws IOException {
+	private void maySaveScore()  {
+		
+		try{
 		File file = new File("score.txt");
 		if(!file.exists()){
-			file.createNewFile();
+			if(file.createNewFile()){
 			Writer output;
 			output = new BufferedWriter(new FileWriter(file));
 			output.append(score+"\n");
 			output.close();
+			}
+			else{
+				System.err.println("cannot create score file");
+				return;
+			}
 		}
 		else{
 			List<Integer> scores = readScore(file);
 			doSaveScore(file, scores);
 		}
-		savedScore =true;
+		savedScore =true;}
+		catch(IOException e){
+			System.err.println("error while writing scores to file");
+		}
 	}
 
 	private void doSaveScore(File file, List<Integer> scores) throws IOException {
