@@ -14,7 +14,7 @@ Les schémas permettent de visualiser l'ensemble du contexte, conteneur, classe 
 En ce qui concerne le contexte, seul le joueur a une influence sur le système.
 Le jeu du Tetris doit être utilisable par une personne. De plus, la fonction multijoueur nécessite l'utilisation d'un réseau.
 C'est pour cette raison que nous avons opté pour pour une architecture à 3 composants qui sont le jeu, l'Interface Homme Machine et le réseau. Comme nous avons 3 composants, nous obtenons alors 3 pakages ce qui nous permet un meilleur découpage de notre code.
-cf les schéma pour voir les interactions
+cf les schémas pour voir les interactions
 
 Exercice Design Pattern/Solid
 Dans notre code nous avons utilisé le design pattern Singleton. En particulier pour la clock. En effet, cette instance est unique et c'est grâce au singleton que nous l'avons spécifié. Il n'y a qu'une instance de clock.
