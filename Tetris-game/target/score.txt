@@ -1,0 +1,3 @@
+date   - score 
+Sun Apr 03 02:52:15 CEST 2016 - 0
+Sun Apr 03 10:00:59 CEST 2016 - 600
